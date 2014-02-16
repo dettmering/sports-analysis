@@ -58,13 +58,13 @@ for (x in 1:length(a$Lat)) {
 
 # Calculate distance
 
-x <- 0
+a$Distance.m <- 0
 distance <- 0
 
 for (x in 1:length(a$x)) {
-  a[x, 'Distance.m'] <- euclidDist(a[x,'x'], a[x,'y'], a[x,'Elevation.m'], a[(x + 1),'x'], a[(x + 1),'y'], a[(x + 1),'Elevation.m'])
+  a[(x + 1), 'Distance.m'] <- euclidDist(a[x,'x'], a[x,'y'], a[x,'Elevation.m'], a[(x + 1),'x'], a[(x + 1),'y'], a[(x + 1),'Elevation.m'])
   distance <- distance + a[x, 'Distance.m']
-  a[x, 'Cumulative.Distance.m'] <- distance
+  a[(x + 1), 'Cumulative.Distance.m'] <- distance
 }
 
 # Convert speed to km/h
