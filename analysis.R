@@ -30,8 +30,19 @@ convertCartesian <- function(lat, lon, lat0, lon0) {
 
 # Calculate Euclidean distance
 
-euclidDist <- function(px, py, qx, qy) {
-  distance <- sqrt((px - qx)^2 + (py - qy)^2)
+euclidDist <- function(px, py, pz, qx, qy, qz) {
+  # If no elevation data are available, ignore elevation.
+  
+  if (is.na(pz)) {
+    pz <- 0
+    qz <- 0
+  }
+  if (is.na(qz)) {
+    pz <- 0
+    qz <- 0
+  }
+  
+  distance <- sqrt((px - qx)^2 + (py - qy)^2 + (pz - qz)^2)
   
   return(distance)
 }
@@ -51,7 +62,7 @@ x <- 0
 distance <- 0
 
 for (x in 1:length(a$x)) {
-  a[x, 'Distance.m'] <- euclidDist(a[x,'x'], a[x,'y'], a[(x + 1),'x'], a[(x + 1),'y'])
+  a[x, 'Distance.m'] <- euclidDist(a[x,'x'], a[x,'y'], a[x,'Elevation.m'], a[(x + 1),'x'], a[(x + 1),'y'], a[(x + 1),'Elevation.m'])
   distance <- distance + a[x, 'Distance.m']
   a[x, 'Cumulative.Distance.m'] <- distance
 }
