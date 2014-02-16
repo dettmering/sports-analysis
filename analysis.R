@@ -4,7 +4,7 @@
 
 # Rename columns
 
-colnames(a) <- c('Segment', 'Point', 'Lat', 'Lon', 'Elevation', 'Heading', 'Precision.m', 'Speed.m.s', 'Time', 'Power.W', 'Cadence.rpm')
+colnames(a) <- c('Segment', 'Point', 'Lat', 'Lon', 'Elevation.m', 'Heading.deg', 'Precision.m', 'Speed.m.s', 'Time', 'Power.W', 'Cadence.rpm', 'Pulse.per.min')
 
 # Conversion geodetic to cartesian
 # Source DOI: 10.1371/journal.pcbi.1003446

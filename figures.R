@@ -3,7 +3,7 @@
 library(ggplot2)
 
 ggplot(a, aes(x = x, y = y)) +
-  geom_point(aes(size = Elevation, color = Speed.kmh)) +
+  geom_point(aes(size = Elevation.m, color = Speed.kmh)) +
   xlab("X (m)") +
   ylab("Y (m)") +
   scale_color_continuous(name = "Speed (km/h)") +
